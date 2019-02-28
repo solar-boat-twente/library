@@ -10,16 +10,22 @@
  *
  * Created on February 28, 2019, 9:10 AM
  */
+#include <iostream>
+#include "structures.h"
 
-#include <cstdlib>
 
-using namespace std;
-
+void printStructure(ControlData &powerInput){
+    std::cout<<powerInput.realHeight;
+    
+}
+void printStructure(ControlData &powerInput);
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+    ControlData powerInput;
+    powerInput.realHeight = 10;
+    printStructure(powerInput);
     return 0;
 }
 
