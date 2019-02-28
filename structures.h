@@ -18,11 +18,6 @@
  Declaring all the structures 
  */
 
-
-
-
-
-
 /*
  * All the input structures and nested input structures for the power data.
  *
@@ -43,30 +38,30 @@ struct PowerInput{
      Nested structures used to order the PowerInput structure
      */
     struct BatteryInput{
-        float celVoltages[12];
-        float stateOfCharge;
-        unsigned char errorNumber;
-        unsigned char errorLocation;
-        signed char maxTemp;
-        signed char minTemp;
-        bool balanceState, contactorReady, contactorStatus;
+        float cel_voltages[12];
+        float state_of_charge;
+        unsigned char error_number;
+        unsigned char error_location;
+        signed char max_temp;
+        signed char min_temp;
+        bool balance_state, contactor_ready, contactor_status;
     };
     
     struct SolarInput{
-        float MPPTPower[10];
-        float panelPower[10];
+        float MPPT_power[10];
+        float panel_power[10];
     };
     
     struct DriverInput{
-        float motorTemp, driverTemp, driverOutputPower, motorSpeed;
-        float driverVoltageInput, driverCurrentInput;
-        bool driverState;
+        float motor_temp, driver_temp, driver_output_power, motor_speed;
+        float driver_voltage_input, driver_current_input;
+        bool driver_state;
     };
     
         
     BatteryInput battery;
     
-    SolarInput solarPanels;
+    SolarInput solar_panels;
     
     DriverInput driver;
 };
@@ -102,22 +97,22 @@ struct UserInput{
     
     struct ControlUserInput{
         //Predefined PID states, using an enumerate
-        PIDState PIDstate;
+        PIDState PID_state;
         
         //Roll given by the pedals saved as an float
         float roll;
     };
     
     struct ButtonInput{
-        bool batteryOn;
-        bool motorOn;    
+        bool battery_on;
+        bool motor_on;    
     };
     
     struct SteeringInput{
     //raw value of the Throttle 0 till 255 (from the analog inputs)
-        unsigned char rawThrottle;
+        unsigned char raw_throttle;
         //values: NO_FLY, FLY, BRIDGE, SLALOM
-        FlyMode flyMode;
+        FlyMode fly_mode;
 
         bool reverse;  
     };
@@ -147,20 +142,20 @@ struct TelemetryInput{
     };
     
     TelemetryControlInput control;
-    bool solarPanelStates[10];
-    float advisedSpeed; 
+    bool solar_panel_states[10];
+    float advised_speed; 
 };
 
 /*
  * structure for all the outputs which are send to Power data
  */
 struct PowerOutput{
-    bool solarPanelStates[10];
+    bool solar_panel_states[10];
     // the throttle used by the Motor from -320000 to 320000
     signed short int throttle;
-    bool motorState;
-    unsigned char contractorControl;
-    unsigned char balancingControl;
+    bool motor_state;
+    unsigned char contractor_control;
+    unsigned char balancing_control;
 };
 
 
@@ -170,25 +165,25 @@ struct PowerOutput{
 struct ControlData{
         
     struct InputXSenseData{
-        float rawPitch, rawRoll;
-        float filteredPitch, filteredRoll;
-        float rawZAcceleration;
+        float raw_pitch, raw_roll;
+        float filtered_pitch, filtered_roll;
+        float raw_z_acceleration;
     };
     
     struct Vlotters{
-        float angleLeft, angleRight;
+        float angle_left, angle_right;
     };
     
     struct ComputedControlData{
-        float forceRoll, forcePitch, forceHeight;
-        float angleLeft, angleRight, angleBack;
+        float force_roll, force_pitch, force_height;
+        float angle_left, angle_right, angle_back;
     };
     
     InputXSenseData xsens;
     Vlotters vlotters;
     ComputedControlData computed;
-    float realHeight;
-    float realRoll; 
+    float real_height;
+    float real_roll; 
 };
 
 #endif /* STRUCTURES_H */
