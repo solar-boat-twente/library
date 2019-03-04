@@ -15,17 +15,18 @@
 
 
 void printStructure(ControlData &powerInput){
-    std::cout<<powerInput.realHeight;
-    
+  std::cout<<powerInput.real_height;
 }
 void printStructure(ControlData &powerInput);
 /*
  * 
  */
 int main(int argc, char** argv) {
-    ControlData powerInput;
-    powerInput.realHeight = 10;
-    printStructure(powerInput);
-    return 0;
+  ControlData control_data;
+  control_data.real_height = 10;
+  //printStructure(control_data);
+  unsigned char hello = 11;
+  std::cout<<~hello;
+  return 0 ;
 }
 
