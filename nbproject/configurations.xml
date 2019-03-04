@@ -5,7 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>C:/Users/Public/SolarBoatTwente/library/src/convert_power.h</itemPath>
-      <itemPath>structures.h</itemPath>
+      <itemPath>C:/Users/Public/SolarBoatTwente/library/src/structures.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -29,6 +29,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>C:\Users\Public\SolarBoatTwente\library\src</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -54,9 +57,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/Users/Public/SolarBoatTwente/library/src/structures.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="structures.h" ex="false" tool="3" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -89,9 +95,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/Users/Public/SolarBoatTwente/library/src/structures.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="structures.h" ex="false" tool="3" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

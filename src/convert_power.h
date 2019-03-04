@@ -16,29 +16,36 @@
 
 #include "structures.h"
 
-namespace PowerStream{
-   
-    class PowerHandler{
-        
-    public:
-        void PowerHandler();
-        void run();
-    private:
-        
-        bool turnRelayOff(PowerOutput &power_output);
-        bool setThrottle(PowerOutput &power_output, UserInput &user_input);
-        bool 
-        
-        
-    
-        
-    }
-    
-    
-    
-    
-    
-    
+namespace power {
+
+class PowerHandler {
+ public:
+  void PowerHandler(structures::PowerInput& power_input,
+                    structures::PowerOutput& power_output,
+                    structures::UserInput& user_input,
+                    structures::TelemetryInput& telemetry_input);
+  void run();
+
+ private:
+
+  bool turnRelayOff();
+  bool setThrottle();
+
+  structures::PowerInput& power_input;
+  structures::PowerOutput& power_output;
+  structures::UserInput& user_input;
+  structures::TelemetryInput& telemetry_input;
+
+
+
+}
+}
+
+
+
+
+
+
 }
 
 
