@@ -108,7 +108,10 @@ struct UserInput {
 
   struct ButtonInput {
     bool battery_on;
+    bool force_battery;
     bool motor_on;
+    bool deadmans_switch;
+    bool solar_on;
   };
 
   struct SteeringInput {
@@ -154,12 +157,32 @@ struct TelemetryInput {
  * structure for all the outputs which are send to Power data
  */
 struct PowerOutput {
+  // bool storing all the solar panel states
   bool solar_panel_states[10];
+
   // the throttle used by the Motor from -320000 to 320000
   signed short int throttle;
+
+  // The state of the motor true = on, false = freewheel
   bool motor_state;
+
+  // Control of the contractor:
+  // 0 = off
+  // 1 = On when BMS want it to be on
+  // 2 = Force On
   unsigned char contractor_control;
+
+  // Control of the balancing:
+  // 0 = regular balancing
+  // 1 = force balancing
   unsigned char balancing_control;
+
+  // Stores if there is any error in the motor:
+  // 0 = no error
+  // 1 = some error
+  unsigned char error;
+
+  //TODO: make error divided into more sub sections.
 };
 
 /*

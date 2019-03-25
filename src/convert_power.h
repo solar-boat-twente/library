@@ -14,40 +14,62 @@
 #ifndef CONVERT_POWER_H
 #define CONVERT_POWER_H
 
-#include "structures.h"
+#include "../include/structures.h"
 
-namespace power {
+//namespace power {
 
 class PowerHandler {
+  /*Main Goal:
+   *  - Fill up the power_output structure
+   * Sub Goals:
+   *  - Write input throttle to output throttle taking reverse etc into account
+   *  - Turn on/off all of the panels
+   *  - Set the Motor state to flywheel or not
+   *  - Check whether balancing should be on
+   *  - Check whether contractor should be on
+   *  - Lets know if the there is an error anywhere
+   */
+  
  public:
-  void PowerHandler(structures::PowerInput& power_input,
-                    structures::PowerOutput& power_output,
-                    structures::UserInput& user_input,
-                    structures::TelemetryInput& telemetry_input);
+  PowerHandler(structures::PowerInput* power_input,
+                  structures::PowerOutput* power_output,
+                  structures::UserInput* user_input,
+                  structures::TelemetryInput* telemetry_input);
+  
   void run();
+  //Function calling all the private function, this one should be run in a thread.
 
  private:
+  bool calculateThrottle();
+  //Uses the reverse state to calculate the throttle (adds a minus if reverse).
+  //Returns if there is success or not
+  
+  signed short int mapThrottle(unsigned char raw_throttle);
+  //Maps the throttle according to a very nice function
+  
+  bool setRelay(); 
+  //Returns whether there is success, functions for switching the relays of the solar panels.
 
-  bool turnRelayOff();
-  bool setThrottle();
+  bool setMotorState();
+  //Sets the motor state by checking the user_input (if the motor is on or not)
+  
+  bool setBalancing();
+  //Checks if the BMS is wants to balance and whether that is allowed or not
+  
+  bool setContactor();
+  //Checks if the Contactor should be open or not and sets it so
+  
+   
+  //Pointers to the different structures used by this class
+  structures::PowerInput* power_input;
+  structures::PowerOutput* power_output;
+  structures::UserInput* user_input;
+  structures::TelemetryInput* telemetry_input;
 
-  structures::PowerInput& power_input;
-  structures::PowerOutput& power_output;
-  structures::UserInput& user_input;
-  structures::TelemetryInput& telemetry_input;
 
 
-
-}
-}
-
-
-
-
-
-
-}
-
+};
+//}
 
 #endif /* CONVERT_POWER_H */
 

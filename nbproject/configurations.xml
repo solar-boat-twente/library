@@ -5,7 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>C:/Users/Public/SolarBoatTwente/library/src/convert_power.h</itemPath>
-      <itemPath>C:/Users/Public/SolarBoatTwente/library/src/structures.h</itemPath>
+      <itemPath>C:/Users/Public/SolarBoatTwente/library/include/structures.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,7 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>C:/Users/Public/SolarBoatTwente/library/src/convert_power.cpp</itemPath>
+      <itemPath>src/convert_power.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -42,14 +42,13 @@
       </toolsSet>
       <compileType>
         <ccTool>
-          <incDir>
-            <pElem>C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++</pElem>
-          </incDir>
+          <standard>8</standard>
+          <commandLine>-pthread -std=c++11 -g</commandLine>
         </ccTool>
       </compileType>
-      <item path="C:/Users/Public/SolarBoatTwente/library/src/convert_power.cpp"
+      <item path="C:/Users/Public/SolarBoatTwente/library/include/structures.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
       <item path="C:/Users/Public/SolarBoatTwente/library/src/convert_power.h"
@@ -57,12 +56,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="C:/Users/Public/SolarBoatTwente/library/src/structures.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/convert_power.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -85,9 +81,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="C:/Users/Public/SolarBoatTwente/library/src/convert_power.cpp"
+      <item path="C:/Users/Public/SolarBoatTwente/library/include/structures.h"
             ex="false"
-            tool="1"
+            tool="3"
             flavor2="0">
       </item>
       <item path="C:/Users/Public/SolarBoatTwente/library/src/convert_power.h"
@@ -95,12 +91,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="C:/Users/Public/SolarBoatTwente/library/src/structures.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/convert_power.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
