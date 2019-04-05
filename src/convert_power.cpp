@@ -21,7 +21,9 @@
 
 //inline namespace power {
 using namespace std;
-    
+using namespace top_level;
+using namespace top_level::power;
+
 PowerHandler::PowerHandler(structures::PowerInput* power_input,
                            structures::PowerOutput* power_output,
                            structures::UserInput* user_input,
@@ -187,4 +189,5 @@ bool PowerHandler::setBalancing(){
   
   return true;
 }
+
 //} /*power*/

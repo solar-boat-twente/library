@@ -23,6 +23,7 @@
  *
  *
  */
+namespace top_level{
 namespace structures {
 //Namespace containing all the global structures
 
@@ -40,31 +41,56 @@ struct PowerInput {
    Nested structures used to order the PowerInput structure
    */
   struct BatteryInput {
+    //The cel_voltages in V
     float cel_voltages[12];
+    //The state of charge number between 0 and 100%
     float state_of_charge;
+    //The raw error_number from the BMS
     unsigned char error_number;
+    //The cell number in which the error occured
     unsigned char error_location;
-    signed char max_temp;
-    signed char min_temp;
-    bool balance_state, contactor_ready, contactor_status;
+    //The maximum temperature in the BMS in degC
+    float max_temp;
+    //The minimum temperature in the BMS in degC
+    float min_temp;
+    //The balancing state of the BMS, False: not balancing, True: balancing
+    bool balance_state; 
+    //Wether the BMS thinks the contactor should be connected, True is ready, False is not ready
+    bool contactor_ready; 
+    //Boolean wether the contactor is connected, True is connected
+    bool contactor_status;
   };
 
   struct SolarInput {
+    //The power of the different MPPTs in W
     float MPPT_power[10];
+    //The power of the different solar panels in W
     float panel_power[10];
+    
   };
 
   struct DriverInput {
-    float motor_temp, driver_temp, driver_output_power, motor_speed;
+    //Motor and driver temperature in degC
+    float motor_temp, driver_temp;
+    //Output power in W, motor speed in rads/s
+    float driver_output_power, motor_speed;
+    //Input voltage of the driver in V, input current in A
     float driver_voltage_input, driver_current_input;
+    //The state of the driver, true is on, false is freewheel
     bool driver_state;
+    //Test wether the key is in the motor controller, true if motor controller is off
+    bool deadman_switch;
   };
 
 
+  //All the power input data from the batteries
   BatteryInput battery;
-
+  
+  //All the input data from the solar panels
+  //All the input data from the driver (Motor controller)
   SolarInput solar_panels;
 
+  //All the input data from the driver (Motor controller)
   DriverInput driver;
 };
 
@@ -102,16 +128,19 @@ struct UserInput {
     //Predefined PID states, using an enumerate
     PIDState PID_state;
 
-    //Roll given by the pedals saved as an float
+    //Roll given by the pedals saved as angle the boat should have
     float roll;
   };
 
   struct ButtonInput {
+    // State from the motor wether the battery should be on
     bool battery_on;
-    bool force_battery;
-    bool motor_on;
-    bool deadmans_switch;
+    // Bool stating whether the contactor and balancing of the battery should be forced
+    bool force_battery; 
+    // bool whether the button for the solar 
     bool solar_on;
+    // States whether the system should debug, false on start-up, on true all the software is restarted
+    bool debug_on;
   };
 
   struct SteeringInput {
@@ -145,6 +174,7 @@ struct TelemetryInput {
     TelemetryPID PID_height;
     TelemetryPID PID_roll;
     TelemetryPID PID_pitch;
+    //Whether the Telemetry system should overwrite the PID values
     bool overwrite;
   };
 
@@ -212,5 +242,6 @@ struct ControlData {
   float real_roll;
 };
 }/* structures */
+}
 #endif /* STRUCTURES_H */
 

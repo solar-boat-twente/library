@@ -8,10 +8,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Public/SolarBoatTwente/library/Makefile</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/nbproject/Makefile-impl.mk</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/nbproject/Makefile-variables.mk</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/src/canbus_wrapper.cpp</file>
             <file>file:/C:/Users/Public/SolarBoatTwente/library/src/convert_power.cpp</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/nbproject/Makefile-Debug.mk</file>
             <file>file:/C:/Users/Public/SolarBoatTwente/library/src/convert_power.h</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/src/canbus_wrapper.h</file>
             <file>file:/C:/Users/Public/SolarBoatTwente/library/main.cpp</file>
             <file>file:/C:/Users/Public/SolarBoatTwente/library/include/structures.h</file>
+            <file>file:/C:/Users/Public/SolarBoatTwente/library/nbproject/project.xml</file>
         </group>
     </open-files>
 </project-private>

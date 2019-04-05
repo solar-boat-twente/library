@@ -17,17 +17,28 @@
 
 #include "include/structures.h"
 #include "src/convert_power.h"
+#include "src/canbus_wrapper.h"
 
 #define DEBUG_POWERHANDLER 0
 
 #define DEBUG 1
 
 using namespace std;
+using namespace top_level;
 
-void powerThread(PowerHandler pw);
+void powerThread(power::PowerHandler pw);
 void throttleThread(structures::UserInput* user_input);
 
-void powerThread(PowerHandler pw){
+void testArrayPointer(int *tester, int length);
+
+void testArrayPointer(int* tester, int length){
+  for (int i=0;i<length;i++){
+    std::cout<<tester[i]<<endl;
+    tester[i]++;
+  }
+}
+
+void powerThread(power::PowerHandler pw){
   for(int i =0;i<10;i++){
     pw.run();
     std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -45,7 +56,8 @@ void throttleThread(structures::UserInput* user_input){
 }
 
 int main(int argc, char** argv) {
-  std::cout<<"Starting mainloop"<<endl;
+  
+    std::cout<<"Starting mainloop"<<endl;
   
   structures::PowerInput *power_input_ptr, power_input;
   structures::PowerOutput* power_output_ptr, power_output;
@@ -70,13 +82,29 @@ int main(int argc, char** argv) {
   power_output_ptr->contractor_control=0;
   
   user_input_ptr->buttons.battery_on=true;
-  PowerHandler powerHandler = PowerHandler(power_input_ptr, power_output_ptr, user_input_ptr, telemetry_input_ptr);
+  power::PowerHandler powerHandler = power::PowerHandler(power_input_ptr, power_output_ptr, user_input_ptr, telemetry_input_ptr);
   
   
-  std::thread th1(powerThread, powerHandler);
-  std::thread th2(throttleThread, user_input_ptr);
-  th1.join();
-  th2.join();
+  //std::thread th1(powerThread, powerHandler);
+  //std::thread th2(throttleThread, user_input_ptr);
+  //th1.join();
+  //th2.join();
+  
+  int *testerArray_ptr;
+  int testArray[4] = {10, 4,6,6};
+  testerArray_ptr = testArray;
+  //testArrayPointer(testArray, 4);
+  for (int i=0;i<4;i++){
+    std::cout<<testArray[i]<<endl;
+  }
+  std::cout<<"Starting CANbusWrapper"<<endl;
+  top_level::canbus::CANbusWrapper can = canbus::CANbusWrapper("can0");
+  unsigned char msg[3] = {1,3,5};
+  can.set_baud(500);
+  for(int i = 0;i<50;i++){
+  can.write_can(500+i,msg,3);
+  
+  }
   return 0 ;
 }
 

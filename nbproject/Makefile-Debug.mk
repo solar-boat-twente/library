@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/canbus_wrapper.o \
 	${OBJECTDIR}/src/convert_power.o
 
 
@@ -66,12 +67,17 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/library: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/home/solarboattwente/can/advcan_source_v2.17/examples -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/src/canbus_wrapper.o: src/canbus_wrapper.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/home/solarboattwente/can/advcan_source_v2.17/examples -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/canbus_wrapper.o src/canbus_wrapper.cpp
 
 ${OBJECTDIR}/src/convert_power.o: src/convert_power.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/convert_power.o src/convert_power.cpp
+	$(COMPILE.cc) -g -I/home/solarboattwente/can/advcan_source_v2.17/examples -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/convert_power.o src/convert_power.cpp
 
 # Subprojects
 .build-subprojects:

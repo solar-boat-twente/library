@@ -15,8 +15,8 @@
 #define CONVERT_POWER_H
 
 #include "../include/structures.h"
-
-//namespace power {
+namespace top_level{
+namespace power {
 
 class PowerHandler {
   /*Main Goal:
@@ -51,8 +51,8 @@ class PowerHandler {
   //Returns whether there is success, functions for switching the relays of the solar panels.
 
   bool setMotorState();
-  //Sets the motor state by checking the user_input (if the motor is on or not)
-  
+  //Sets the motor state by checking the user_input (if the motor is on or not), looks at the throttle for this.
+    
   bool setBalancing();
   //Checks if the BMS is wants to balance and whether that is allowed or not
   
@@ -69,7 +69,8 @@ class PowerHandler {
 
 
 };
-//}
+}
+}
 
 #endif /* CONVERT_POWER_H */
 
